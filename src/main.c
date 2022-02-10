@@ -20,18 +20,29 @@
  * @date April 1 2017
  *
  */
-#include "platform.h"
-#include "memory.h"
+#include "../include/common/course1.h"
+#include "../include/common/memory.h"
+#include "../include/common/stats.h"
+#include "../include/common/data.h"
+#include "../include/common/platform.h"
 
-#define MAX_LENGTH (10)
-char buffer[MAX_LENGTH];
+/*
+ * #define MAX_LENGTH (10)
+ * char buffer[MAX_LENGTH];
+*/
 
-/* A pretty boring main file */
+void main(){
+  #ifdef COURSE1
+    course1();
+  #endif
+}
+
+/* A pretty boring main file ------------
 int main(void) {
   unsigned int i;
   char value;
 
-  /* Code below does some arbitrary memory Reads & writes */
+  /* Code below does some arbitrary memory Reads & writes --------------
   clear_all(buffer, MAX_LENGTH);
   set_all( ( buffer + 8 ), 43, 2); 
   set_value(buffer, 0, 0x61);
@@ -50,5 +61,5 @@ int main(void) {
   }
   PRINTF("\n");
   return 0;
-}
+}*/
 

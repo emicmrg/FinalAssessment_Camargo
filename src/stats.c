@@ -23,7 +23,7 @@
 
 
 
-#include <stdio.h>
+#include "platform.h"
 #include "stats.h"
 
 /* Size of the Data Set */
@@ -53,23 +53,25 @@ void main() {
 
 /* Add other Implementation File Code Here */
 void print_statistics(unsigned char median, unsigned char mean, unsigned char maximum, unsigned char minimum){
-  printf("----STATISTICS----\n");
-  printf("Median = %d\n", median);
-  printf("Mean = %d\n", mean);
-  printf("Minimum = %d\n", minimum);
-  printf("Maximum = %d\n", maximum);
+  PRINTF("----STATISTICS----\n");
+  PRINTF("Median = %d\n", median);
+  PRINTF("Mean = %d\n", mean);
+  PRINTF("Minimum = %d\n", minimum);
+  PRINTF("Maximum = %d\n", maximum);
 }
 
 void print_array(unsigned char *arrayData, int arrayLength){
-  int i=0;
-  printf("----ORIGINAL ARRAY----");
-  for(i; i<arrayLength; i++){
-    if((i%8)==0){
-      printf("\n");
+  #ifdef VERBOSE
+    int i=0;
+    PRINTF("----ORIGINAL ARRAY----");
+    for(i; i<arrayLength; i++){
+      if((i%8)==0){
+        PRINTF("\n");
+      }
+      PRINTF("%d, ", arrayData[i]);
     }
-    printf("%d, ", arrayData[i]);
-  }
-  printf("\n");
+    PRINTF("\n");
+  #endif
 }
 
 int find_median(unsigned char *arrayData, int arrayLength){
@@ -111,7 +113,7 @@ int find_minimum(unsigned char *arrayData, int arrayLength){
 
 void sort_array(unsigned char *arrayData, int arrayLength){
   int i=39, j=39, pivote=0;
-  printf("----SORT ARRAY----");
+  PRINTF("----SORT ARRAY----");
   for(i; i>=0; i--){
     for(j=39; j>=0; j--){
       if(arrayData[i]<arrayData[j]){
@@ -123,9 +125,9 @@ void sort_array(unsigned char *arrayData, int arrayLength){
   }
   for(i=0; i<arrayLength; i++){
     if((i%8)==0){
-      printf("\n");
+      PRINTF("\n");
     }
-    printf("%d, ", arrayData[i]);
+    PRINTF("%d, ", arrayData[i]);
   }
-  printf("\n");
+  PRINTF("\n");
 }
