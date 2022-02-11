@@ -18,11 +18,14 @@
  */
 
 #include <stdint.h>
-#include "course1.h"
-#include "platform.h"
-#include "memory.h"
-#include "data.h"
-#include "stats.h"
+#include "../include/common/course1.h"
+#include "../include/common/memory.h"
+#include "../include/common/stats.h"
+#include "../include/common/data.h"
+#include "../include/common/platform.h"
+
+#define BASE_16 (16)
+#define BASE_10 (10)
 
 int8_t test_data1() {
   uint8_t * ptr;
@@ -44,7 +47,7 @@ int8_t test_data1() {
   PRINTF("  Initial number: %d\n", num);
   PRINTF("  Final Decimal number: %d\n", value);
   #endif
-  free_words( (uint32_t*)ptr );
+  free_words((uint32_t*)ptr);
 
   if ( value != num )
   {
@@ -73,7 +76,7 @@ int8_t test_data2() {
   PRINTF("  Initial Decimal number: %d\n", num);
   PRINTF("  Final Decimal number: %d\n", value);
   #endif
-  free_words( (uint32_t*)ptr );
+  free_words((uint32_t*)ptr);
 
   if ( value != num )
   {
@@ -118,7 +121,7 @@ int8_t test_memmove1() {
     }
   }
 
-  free_words( (uint32_t*)set );
+  free_words((uint32_t*)set);
   return ret;
 }
 
@@ -156,7 +159,7 @@ int8_t test_memmove2() {
     }
   }
 
-  free_words( (uint32_t*)set );
+  free_words((uint32_t*)set);
   return ret;
 }
 
@@ -196,7 +199,7 @@ int8_t test_memmove3() {
   }
 
 
-  free_words( (uint32_t*)set );
+  free_words((uint32_t*)set);
   return ret;
 
 }
@@ -235,7 +238,7 @@ int8_t test_memcopy() {
     }
   }
 
-  free_words( (uint32_t*)set );
+  free_words((uint32_t*)set);
   return ret;
 }
 
@@ -281,7 +284,7 @@ int8_t test_memset()
     }
   }
   
-  free_words( (uint32_t*)set );
+  free_words((uint32_t*)set);
   return ret;
 }
 
@@ -317,7 +320,7 @@ int8_t test_reverse()
     }
   }
 
-  free_words( (uint32_t*)copy );
+  free_words((uint32_t*)copy);
   return ret;
 }
 
@@ -333,8 +336,8 @@ void course1(void)
   results[3] = test_memmove2();
   results[4] = test_memmove3();
   results[5] = test_memcopy();
-  results[6] = test_memset();
-  results[7] = test_reverse();
+  results[6] = test_reverse();
+  results[7] = test_memset();
 
   for ( i = 0; i < TESTCOUNT; i++) 
   {

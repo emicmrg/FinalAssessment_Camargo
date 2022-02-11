@@ -39,7 +39,7 @@ include sources.mk
 
 # Platform Overrides
 PLATFORM = $(shell)
-TARGET = c1m2
+TARGET = course1
 
 # Architectures Specific Flags
 ifeq ($(PLATFORM), MSP432)
@@ -54,28 +54,27 @@ ifeq ($(PLATFORM), MSP432)
 	CC = arm-none-eabi-gcc
 	LD = arm-none-eabi-ld
 	LDFLAGS = -Wl,-Map=$(TARGET).map -Wl,-T $(LINKER_FILE)
-	CFLAGS = -mcpu=$(CPU) \
-	         -m$(ARCH) \
-			 -march=armv7e-m \
-			 -mfloat-abi=hard \
-			 -mfpu=fpv4-sp-d16 \
-			 --specs=$(SPECS) \
-			 -g \
-			 -std=c99 \
-			 -O0 \
-			 -Wall \
-			 -Werror
+	CFLAGS = -DHOST \
+			-mcpu=$(CPU) \
+	        -m$(ARCH) \
+			-march=armv7e-m \
+			-mfloat-abi=hard \
+			-mfpu=fpv4-sp-d16 \
+			--specs=$(SPECS) \
+			-g \
+			-std=c99 \
+			-O0 \
+			-Wall \
+			-Werror
 	SOURCES = $(MSP432_S)
 	INCLUDES = $(MSP432_I)
 	SIZE = arm-none-eabi-size
 	OBJDUMP_TOOL = arm-none-eabi-objdump
-endif
-
-ifeq ($(PLATFORM), HOST)
+else
 	CC = gcc
 	LD = ld
 	LDFLAGS = -Wl,-Map=$(TARGET).map
-	CFLAGS = -g -std=c99 -O0 -Wall -Werror
+	CFLAGS = -DHOST -g -O0 -std=c99 -Wall
 	CPPFLAGS = -M -MF
 	SOURCES = $(HOST_S)
 	INCLUDES = $(HOST_I)
@@ -99,15 +98,15 @@ OUTS:= $(SOURCES:.c=.out)
 	$(OBJDUMP_TOOL) --disassemble $< > $@
 
 %.o : %.c
-	$(CC) -D$(PLATFORM) $(INCLUDES) $(CFLAGS) -c $<
+	$(CC) $(INCLUDES) $(CFLAGS) -D$(PLATFORM) -c $<
 
 .PHONY: compile-all
 compile-all:
-	$(CC) -D$(PLATFORM) $(INCLUDES) $(CFLAGS) -c $(SOURCES)
+	$(CC) $(INCLUDES) $(CFLAGS) -D$(PLATFORM) -c $(SOURCES)
 
 .PHONY: build
 build:
-	$(CC) -D$(PLATFORM) $(INCLUDES) $(CFLAGS) $(LDFLAGS) $(SOURCES) -o $(TARGET).out
+	$(CC) $(INCLUDES) $(CFLAGS) -D$(PLATFORM) $(LDFLAGS) $(SOURCES) -o $(TARGET).out
 	$(SIZE) -Atd $(TARGET).out
 	$(SIZE) -Bx $(TARGET).out
 	$(SIZE) -Btd $(TARGET).out

@@ -21,9 +21,10 @@
  */
 #ifndef __MEMORY_H__
 #define __MEMORY_H__
+//#define NULL (0)
 
-typedef unsigned char uint8_t;
-typedef long int int32_t;
+#include <stdint.h>
+#include <stdlib.h>
 
 /**
  * @brief Sets a value of a data array 
@@ -102,6 +103,6 @@ uint8_t * my_memset(uint8_t * src, uint8_t length, uint8_t value);
 uint8_t * my_memzero(uint8_t * src, uint8_t length);
 uint8_t * my_reverse(uint8_t * src, uint8_t length);
 int32_t * reserve_words(uint8_t length);
-void free_words(int32_t * src);
+void free_words(uint32_t * src);
 
 #endif /* __MEMORY_H__ */
