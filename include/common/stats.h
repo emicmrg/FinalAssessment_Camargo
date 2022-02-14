@@ -22,15 +22,7 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
-/* Add Your Declarations and Function Comments here */ 
-void print_statistics(unsigned char median, unsigned char mean, unsigned char maximum, unsigned char minimum);
-void print_array(unsigned char *arrayData, int arrayLength);
-int find_median(unsigned char *arrayData, int arrayLength);
-int find_mean(unsigned char *arrayData, int arrayLength);
-int find_maximum(unsigned char *arrayData, int arrayLength);
-int find_minimum(unsigned char *arrayData, int arrayLength);
-void sort_array(unsigned char *arrayData, int arrayLength);
-
+/* Add Your Declarations and Function Comments here */
 /**
  * @brief Print statistics
  *
@@ -44,6 +36,7 @@ void sort_array(unsigned char *arrayData, int arrayLength);
  *
  * @return No return because it is a void function
  */
+void print_statistics(unsigned char median, unsigned char mean, unsigned char maximum, unsigned char minimum);
 
 /**
  * @brief Print array
@@ -55,6 +48,7 @@ void sort_array(unsigned char *arrayData, int arrayLength);
  *
  * @return No return because it is a void function
  */
+void print_array(unsigned char *arrayData, int arrayLength);
 
 /**
  * @brief Find median
@@ -66,6 +60,7 @@ void sort_array(unsigned char *arrayData, int arrayLength);
  *
  * @return result An unsigned char variable for the median value
  */
+int find_median(unsigned char *arrayData, int arrayLength);
 
 /**
  * @brief Find mean
@@ -77,6 +72,7 @@ void sort_array(unsigned char *arrayData, int arrayLength);
  *
  * @return result An unsigned char variable for the mean value
  */
+int find_mean(unsigned char *arrayData, int arrayLength);
 
 /**
  * @brief Find maximum
@@ -88,6 +84,7 @@ void sort_array(unsigned char *arrayData, int arrayLength);
  *
  * @return result An unsigned char variable for the maximum value
  */
+int find_maximum(unsigned char *arrayData, int arrayLength);
 
 /**
  * @brief Find minimum
@@ -99,6 +96,7 @@ void sort_array(unsigned char *arrayData, int arrayLength);
  *
  * @return result An unsigned char variable for the minimum value
  */
+int find_minimum(unsigned char *arrayData, int arrayLength);
 
 /**
  * @brief sort_array
@@ -110,6 +108,6 @@ void sort_array(unsigned char *arrayData, int arrayLength);
  *
  * @return No return because it is a void function
  */
-
+void sort_array(unsigned char *arrayData, int arrayLength);
 
 #endif /* __STATS_H__ */

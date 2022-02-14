@@ -1,1 +1,17 @@
-Test file just to test the push
+###******************************************************************************
+# Copyright (C) 2022 Emilio Camargo
+#
+# Redistribution, modification or use of this software in source or binary
+# forms is permitted as long as the files maintain this copyright. Users are 
+# permitted to modify this and use it to learn about the field of embedded
+# software. Alex Fosdick and the University of Colorado are not liable for any
+# misuse of this material. 
+#
+###*****************************************************************************
+
+This is the 4th excersice of the Coursera Course "Introduction to Embedded Systems Software and Development Enviroments"
+
+###******************** Instructions for compilation ****************************
+
+~ For a complete build write on terminal -> make build TAG=COURSE1/VERBOSE
+~ You must use TAG to select the flag for every make rule or command.

@@ -95,14 +95,94 @@ void set_all(char * ptr, char value, unsigned int size);
 void clear_all(char * ptr, unsigned int size);
 
 /**
+ * @brief Move and copy elements in a data array
  *
+ * Given a pointer from source and destination and int value of length,
+ * this will move and copy the address from the source to destination. 
+ *
+ * @param src Source pointer
+ * @param dst Destination pointer
+ * @param length Length of bytes to move from src to dst
+ *
+ * @return uint8_t
  */
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, uint8_t length);
+
+/**
+ * @brief Move and copy elements in a data array
+ *
+ * Given a pointer from source and destination and int value of length,
+ * this will move and copy the address from the source to destination while
+ * handling overlap of source and destination. 
+ *
+ * @param src Source pointer
+ * @param dst Destination pointer
+ * @param length Length of bytes to move from src to dst
+ *
+ * @return uint8_t
+ */
 uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, uint8_t length);
+
+/**
+ * @brief Set given memory locations
+ *
+ * This function will take a pointer to a source memory location and 
+ * set with a given value. 
+ *
+ * @param src Source pointer
+ * @param length Length in bytes
+ * @param value Value to set all given memory locations
+ *
+ * @return uint8_t
+ */
 uint8_t * my_memset(uint8_t * src, uint8_t length, uint8_t value);
+
+/**
+ * @brief Set with zero memory allocations
+ *
+ * Given a pointer to a char data set and a length in bytes,
+ * clear means to set to zero. 
+ *
+ * @param src Source pointer
+ * @param length Length in bytes
+ *
+ * @return uint8_t
+ */
 uint8_t * my_memzero(uint8_t * src, uint8_t length);
+
+/**
+ * @brief Reverse order of bytes
+ *
+ * Given a pointer and a length in bytes, this function will reverse
+ * the order of all the bytes. 
+ *
+ * @param src Source pointer
+ * @param length Length of bytes
+ *
+ * @return uint8_t
+ */
 uint8_t * my_reverse(uint8_t * src, uint8_t length);
+
+/**
+ * @brief Reserve space in dynamic memory
+ *
+ * This function takes number of words to allocate in dynamic memory 
+ *
+ * @param length Length of bytes
+ *
+ * @return uint8_t
+ */
 int32_t * reserve_words(uint8_t length);
+
+/**
+ * @brief Free space in dynamic memory
+ *
+ * This function free the taken number of words allocated in dynamic memory  
+ *
+ * @param src Source pointer
+ *
+ * @return void.
+ */
 void free_words(uint32_t * src);
 
 #endif /* __MEMORY_H__ */

@@ -51,13 +51,6 @@
 }*/
 
 /* Add other Implementation File Code Here */
-void print_statistics(unsigned char median, unsigned char mean, unsigned char maximum, unsigned char minimum){
-  PRINTF("----STATISTICS----\n");
-  PRINTF("Median = %d\n", median);
-  PRINTF("Mean = %d\n", mean);
-  PRINTF("Minimum = %d\n", minimum);
-  PRINTF("Maximum = %d\n", maximum);
-}
 
 void print_array(unsigned char *arrayData, int arrayLength){
   #ifdef VERBOSE
@@ -71,6 +64,14 @@ void print_array(unsigned char *arrayData, int arrayLength){
     }
     PRINTF("\n");
   #endif
+}
+
+/*void print_statistics(unsigned char median, unsigned char mean, unsigned char maximum, unsigned char minimum){
+  PRINTF("----STATISTICS----\n");
+  PRINTF("Median = %d\n", median);
+  PRINTF("Mean = %d\n", mean);
+  PRINTF("Minimum = %d\n", minimum);
+  PRINTF("Maximum = %d\n", maximum);
 }
 
 int find_median(unsigned char *arrayData, int arrayLength){
@@ -129,4 +130,4 @@ void sort_array(unsigned char *arrayData, int arrayLength){
     PRINTF("%d, ", arrayData[i]);
   }
   PRINTF("\n");
-}
+}*/

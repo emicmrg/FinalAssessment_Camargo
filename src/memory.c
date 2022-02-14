@@ -52,7 +52,7 @@ void clear_all(char * ptr, unsigned int size){
 
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, uint8_t length){
 	
-	int16_t datatoMove[length];
+	uint8_t datatoMove[length];
 	// Copy to buffer
 	my_memcopy(src, datatoMove, length);
 	

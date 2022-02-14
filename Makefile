@@ -38,8 +38,9 @@
 include sources.mk
 
 # Platform Overrides
-PLATFORM = $(shell)
+PLATFORM = HOST
 TARGET = course1
+TAG= $(shell)
 
 # Architectures Specific Flags
 ifeq ($(PLATFORM), MSP432)
@@ -70,7 +71,8 @@ ifeq ($(PLATFORM), MSP432)
 	INCLUDES = $(MSP432_I)
 	SIZE = arm-none-eabi-size
 	OBJDUMP_TOOL = arm-none-eabi-objdump
-else
+endif
+ifeq ($(PLATFORM), HOST)
 	CC = gcc
 	LD = ld
 	LDFLAGS = -Wl,-Map=$(TARGET).map
@@ -89,24 +91,24 @@ MAPS:= $(SOURCES:.c=.map)
 OUTS:= $(SOURCES:.c=.out)
 
 %.i : %.c
-	$(CC) -D$(PLATFORM) $(INCLUDES) $(CFLAGS) -E -o $@ $<
+	$(CC) -D$(TAG) $(INCLUDES) $(CFLAGS) -E -o $@ $<
 
 %.asm : %.c
-	$(CC) -D$(PLATFORM) $(INCLUDES) $(CFLAGS) $< -S
+	$(CC) -D$(TAG) $(INCLUDES) $(CFLAGS) $< -S
 
 %.asm : %.out
 	$(OBJDUMP_TOOL) --disassemble $< > $@
 
 %.o : %.c
-	$(CC) $(INCLUDES) $(CFLAGS) -D$(PLATFORM) -c $<
+	$(CC) $(INCLUDES) $(CFLAGS) -D$(TAG) -c $<
 
 .PHONY: compile-all
 compile-all:
-	$(CC) $(INCLUDES) $(CFLAGS) -D$(PLATFORM) -c $(SOURCES)
+	$(CC) $(INCLUDES) $(CFLAGS) -D$(TAG) -c $(SOURCES)
 
 .PHONY: build
 build:
-	$(CC) $(INCLUDES) $(CFLAGS) -D$(PLATFORM) $(LDFLAGS) $(SOURCES) -o $(TARGET).out
+	$(CC) $(INCLUDES) $(CFLAGS) -D$(TAG) $(LDFLAGS) $(SOURCES) -o $(TARGET).out
 	$(SIZE) -Atd $(TARGET).out
 	$(SIZE) -Bx $(TARGET).out
 	$(SIZE) -Btd $(TARGET).out
